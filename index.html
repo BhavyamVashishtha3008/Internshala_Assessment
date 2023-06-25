@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assessment</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        #left-panel {
+            width: 20%;
+            background: #f1f1f1;
+            padding: 20px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        #left-panel ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #left-panel li {
+            margin-bottom: 10px;
+        }
+
+        #left-panel a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        #left-panel a:hover {
+            color: #555;
+        }
+
+        #content {
+            width: 80%;
+            padding: 20px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        #content h2 {
+            color: #333;
+        }
+
+        #content p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div id="left-panel">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#information">Information</a></li>
+            <li><a href="#guide">Guide</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <h2>Welcome to the Website!</h2>
+        <p>Select an option from the left panel to see the corresponding content here.</p>
+        
+        <div id="home" style="display: none;">
+            <h2>Home</h2>
+            <p>This is the Home section.</p>
+        </div>
+        
+        <div id="contact" style="display: none;">
+            <h2>Contact</h2>
+            <p>This is the Contact section.</p>
+        </div>
+        
+        <div id="information" style="display: none;">
+            <h2>Information</h2>
+            <p>This is the Information section.</p>
+        </div>
+        
+        <div id="guide" style="display: none;">
+            <h2>Guide</h2>
+            <p>This is the Guide section.</p>
+        </div>
+    </div>
+
+    <script>
+        // Add event listeners to the left panel links
+        var links = document.querySelectorAll('#left-panel a');
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent the default link behavior
+
+                var contentId = this.getAttribute('href').substring(1); // Get the ID of the content to show
+                var content = document.getElementById(contentId);
+
+                // Hide all content elements
+                var allContent = document.querySelectorAll('#content > *');
+                for (var j = 0; j < allContent.length; j++) {
+                    allContent[j].style.display = 'none';
+                }
+
+                // Show the selected content
+                content.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
